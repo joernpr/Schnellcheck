@@ -1,0 +1,35 @@
+PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.0
+=========================================================================
+
+INHALT
+  index.html             Die App (alle Inhalte, Bilder und Logik enthalten)
+  manifest.webmanifest   App-Beschreibung (Name, Icon, Farben, Kurzbefehle)
+  sw.js                  Service Worker für den Offline-Betrieb
+  icons/                 App-Icons für Home-Bildschirm und Browser
+
+BEREITSTELLEN
+  Damit sich die App installieren lässt, muss der Ordner über HTTPS
+  erreichbar sein. Den kompletten Ordner unverändert hochladen, z. B. auf:
+    - den Firmen-Webserver bzw. das Intranet (eigener Unterordner)
+    - GitHub Pages, Netlify oder Azure Static Web Apps
+  Ein Server-Programm ist nicht nötig, es sind nur statische Dateien.
+
+  Zum lokalen Testen am PC:   python -m http.server 8000
+  und dann http://localhost:8000 im Browser öffnen.
+
+INSTALLIEREN
+  iPhone / iPad:  Seite in Safari öffnen > Teilen > „Zum Home-Bildschirm“
+  Android:        Seite in Chrome öffnen > „App installieren“ (Button in der
+                  App oder im Chrome-Menü)
+  Windows / Mac:  Chrome oder Edge > Installieren-Symbol in der Adressleiste
+
+  Nach dem ersten Öffnen funktioniert die App auch ohne Internet.
+  Die Antworten werden nur auf dem jeweiligen Gerät gespeichert.
+
+AKTUALISIEREN
+  Neue Version hochladen und in sw.js die VERSION erhöhen. Die App meldet
+  beim nächsten Start „Neue Version verfügbar“.
+
+OHNE SERVER
+  index.html lässt sich auch direkt per Doppelklick öffnen. Dann läuft die
+  App im Browser, ist aber nicht installierbar und nicht offline-fähig.
