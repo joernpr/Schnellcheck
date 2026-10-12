@@ -1,8 +1,9 @@
-PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.0
+PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.4
 =========================================================================
 
 INHALT
   index.html             Die App (alle Inhalte, Bilder und Logik enthalten)
+  config.js              EINSTELLUNGEN: Formulartext und Einwilligungs-Pflicht
   manifest.webmanifest   App-Beschreibung (Name, Icon, Farben, Kurzbefehle)
   sw.js                  Service Worker für den Offline-Betrieb
   icons/                 App-Icons für Home-Bildschirm und Browser
@@ -25,6 +26,18 @@ INSTALLIEREN
 
   Nach dem ersten Öffnen funktioniert die App auch ohne Internet.
   Die Antworten werden nur auf dem jeweiligen Gerät gespeichert.
+
+FORMULAR & PDF-BERICHT
+  Im letzten Schritt jedes Checks füllt der Kunde das Formular aus und tippt
+  auf „Als PDF exportieren“. Kontaktdaten und die Werbe-Einwilligung
+  (Ja/Nein) erscheinen im PDF. Es wird nichts per Mail versendet, alle
+  Daten bleiben auf dem Gerät.
+
+  In config.js lassen sich der Text über dem Formular und die Frage, ob
+  die Einwilligung Pflicht ist, einstellen.
+
+  Mit „Alles zurücksetzen“ (Startseite oder Footer) werden alle Antworten
+  und Kontaktdaten vom Gerät gelöscht – z. B. vor dem nächsten Kunden.
 
 AKTUALISIEREN
   Neue Version hochladen und in sw.js die VERSION erhöhen. Die App meldet

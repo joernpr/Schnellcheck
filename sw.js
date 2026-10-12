@@ -1,8 +1,8 @@
 /* Phoenix Contact Schnellchecks – Service Worker (Offline-Betrieb) */
-const VERSION = '1.0';
+const VERSION = '1.4';
 const CACHE = 'pc-schnellcheck-' + VERSION;
 const FONT_CACHE = 'pc-schnellcheck-fonts';
-const CORE = ['./', './index.html', './manifest.webmanifest',
+const CORE = ['./', './index.html', './config.js', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
   './icons/apple-touch-icon.png', './icons/favicon-32.png'];
 
@@ -32,6 +32,14 @@ self.addEventListener('fetch', e => {
   }
   if (url.origin !== location.origin) return;
 
+  // Einstellungen: immer zuerst aus dem Netz (neue Empfängeradresse sofort aktiv)
+  if (url.pathname.endsWith('/config.js')) {
+    e.respondWith(fetch(req).then(r => {
+      if (r.ok) { const copy = r.clone(); caches.open(CACHE).then(c => c.put('./config.js', copy)); }
+      return r;
+    }).catch(() => caches.match('./config.js')));
+    return;
+  }
   // Seitenaufruf: erst Netz (für Updates), sonst Cache
   if (req.mode === 'navigate') {
     e.respondWith(fetch(req).then(r => {
