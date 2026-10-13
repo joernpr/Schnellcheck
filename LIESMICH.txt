@@ -1,4 +1,4 @@
-PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.7
+PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.8
 =========================================================================
 
 INHALT
@@ -30,7 +30,7 @@ INSTALLIEREN
 FORMULAR, E-MAIL UND PDF-BERICHT
   Im letzten Schritt jedes Checks füllt der Kunde das Formular aus
   (inkl. Feld „Ansprechpartner“) und hat drei Möglichkeiten:
-    - „Per E-Mail senden“   -> geht an service@phoenixcontact.de
+    - „Per E-Mail senden“   -> geht an services@phoenixcontact.de
     - „Als PDF exportieren“ -> PDF mit Kontaktdaten und Einwilligung Ja/Nein
     - „QR-Code anzeigen“    -> Bericht auf anderem Gerät öffnen
   Die E-Mail enthält alle Angaben, das Ergebnis und einen Link, über den
@@ -38,7 +38,7 @@ FORMULAR, E-MAIL UND PDF-BERICHT
 
   WICHTIG – einmalige Freischaltung (Versandart 'formsubmit'):
     Beim allerersten Senden verschickt FormSubmit.co eine Aktivierungs-Mail
-    an service@phoenixcontact.de. Dort einmal „Activate Form“ klicken, erst
+    an services@phoenixcontact.de. Dort einmal „Activate Form“ klicken, erst
     danach kommen die Anfragen an. Die Daten laufen dabei über den Dienst
     FormSubmit.co (USA) – bitte vorab mit Datenschutz/IT abstimmen.
     Alternativen in config.js: 'endpoint' (eigener Server / Power Automate)

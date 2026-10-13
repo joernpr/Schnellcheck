@@ -5,7 +5,7 @@
 window.PC_CONFIG = {
 
   // Empfänger der E-Mails aus dem Formular
-  empfaenger: 'service@phoenixcontact.de',
+  empfaenger: 'services@phoenixcontact.de',
 
   // Optional: Kopie an weitere Adressen, durch Komma getrennt
   kopie: '',
