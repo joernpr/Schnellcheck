@@ -1,9 +1,9 @@
-PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.4
+PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 1.7
 =========================================================================
 
 INHALT
   index.html             Die App (alle Inhalte, Bilder und Logik enthalten)
-  config.js              EINSTELLUNGEN: Formulartext und Einwilligungs-Pflicht
+  config.js              EINSTELLUNGEN: E-Mail-Empfänger, Versandart, Formulartext
   manifest.webmanifest   App-Beschreibung (Name, Icon, Farben, Kurzbefehle)
   sw.js                  Service Worker für den Offline-Betrieb
   icons/                 App-Icons für Home-Bildschirm und Browser
@@ -27,17 +27,40 @@ INSTALLIEREN
   Nach dem ersten Öffnen funktioniert die App auch ohne Internet.
   Die Antworten werden nur auf dem jeweiligen Gerät gespeichert.
 
-FORMULAR & PDF-BERICHT
-  Im letzten Schritt jedes Checks füllt der Kunde das Formular aus und tippt
-  auf „Als PDF exportieren“. Kontaktdaten und die Werbe-Einwilligung
-  (Ja/Nein) erscheinen im PDF. Es wird nichts per Mail versendet, alle
-  Daten bleiben auf dem Gerät.
+FORMULAR, E-MAIL UND PDF-BERICHT
+  Im letzten Schritt jedes Checks füllt der Kunde das Formular aus
+  (inkl. Feld „Ansprechpartner“) und hat drei Möglichkeiten:
+    - „Per E-Mail senden“   -> geht an service@phoenixcontact.de
+    - „Als PDF exportieren“ -> PDF mit Kontaktdaten und Einwilligung Ja/Nein
+    - „QR-Code anzeigen“    -> Bericht auf anderem Gerät öffnen
+  Die E-Mail enthält alle Angaben, das Ergebnis und einen Link, über den
+  sich der vollständige Bericht öffnen und als PDF speichern lässt.
 
-  In config.js lassen sich der Text über dem Formular und die Frage, ob
-  die Einwilligung Pflicht ist, einstellen.
+  WICHTIG – einmalige Freischaltung (Versandart 'formsubmit'):
+    Beim allerersten Senden verschickt FormSubmit.co eine Aktivierungs-Mail
+    an service@phoenixcontact.de. Dort einmal „Activate Form“ klicken, erst
+    danach kommen die Anfragen an. Die Daten laufen dabei über den Dienst
+    FormSubmit.co (USA) – bitte vorab mit Datenschutz/IT abstimmen.
+    Alternativen in config.js: 'endpoint' (eigener Server / Power Automate)
+    oder 'mailto' (öffnet das Mailprogramm des Geräts).
+
+  Ohne Internet wird die E-Mail auf dem Gerät gespeichert und automatisch
+  gesendet, sobald wieder eine Verbindung besteht.
 
   Mit „Alles zurücksetzen“ (Startseite oder Footer) werden alle Antworten
   und Kontaktdaten vom Gerät gelöscht – z. B. vor dem nächsten Kunden.
+
+QR-CODE: BERICHT AUF ANDEREM GERÄT ÖFFNEN
+  Im letzten Schritt „QR-Code anzeigen“ tippen und den Code mit dem anderen
+  Gerät scannen. Dort öffnet sich der fertige Bericht und lässt sich als PDF
+  speichern. Derselbe QR-Code steht auch am Ende jedes PDF-Berichts.
+
+  Der Code enthält Antworten und Kontaktdaten direkt im Link (nach dem #).
+  Dieser Teil wird nicht an den Server übertragen, es läuft also nichts
+  über GitHub. Wer den Code scannt, sieht allerdings alle Angaben.
+
+  Voraussetzung: Die App ist über ihre Webadresse geöffnet (z. B. GitHub
+  Pages). Bei der lokalen Einzeldatei in config.js „appUrl“ eintragen.
 
 AKTUALISIEREN
   Neue Version hochladen und in sw.js die VERSION erhöhen. Die App meldet
