@@ -1,8 +1,9 @@
 /* Phoenix Contact Schnellchecks – Service Worker (Offline-Betrieb) */
-const VERSION = '1.8';
+const VERSION = '2.0';
 const CACHE = 'pc-schnellcheck-' + VERSION;
 const FONT_CACHE = 'pc-schnellcheck-fonts';
-const CORE = ['./', './index.html', './config.js', './manifest.webmanifest',
+const PAGES = ['./index.html', './en.html', './fr.html', './es.html'];
+const CORE = ['./', ...PAGES, './config.js', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
   './icons/apple-touch-icon.png', './icons/favicon-32.png'];
 
@@ -42,9 +43,11 @@ self.addEventListener('fetch', e => {
   }
   // Seitenaufruf: erst Netz (für Updates), sonst Cache
   if (req.mode === 'navigate') {
+    const page = /\/(en|fr|es)\.html$/.test(url.pathname) ? './' + url.pathname.split('/').pop() : './index.html';
     e.respondWith(fetch(req).then(r => {
-      const copy = r.clone(); caches.open(CACHE).then(c => c.put('./index.html', copy)); return r;
-    }).catch(() => caches.match('./index.html')));
+      if (r.ok) { const copy = r.clone(); caches.open(CACHE).then(c => c.put(page, copy)); }
+      return r;
+    }).catch(() => caches.match(page)));
     return;
   }
   // Übrige Dateien: Cache zuerst
