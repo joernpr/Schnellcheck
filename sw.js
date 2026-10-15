@@ -1,5 +1,5 @@
 /* Phoenix Contact Schnellchecks – Service Worker (Offline-Betrieb) */
-const VERSION = '2.0';
+const VERSION = '2.1';
 const CACHE = 'pc-schnellcheck-' + VERSION;
 const FONT_CACHE = 'pc-schnellcheck-fonts';
 const PAGES = ['./index.html', './en.html', './fr.html', './es.html'];
