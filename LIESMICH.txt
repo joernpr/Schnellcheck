@@ -1,4 +1,4 @@
-PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 2.1
+PHOENIX CONTACT SAFETY & SECURITY SCHNELLCHECKS – APP-VERSION 2.2
 =========================================================================
 
 INHALT
@@ -7,6 +7,7 @@ INHALT
   config.js              EINSTELLUNGEN: E-Mail-Empfänger, Versandart, Formulartext
   manifest.webmanifest   App-Beschreibung (Name, Icon, Farben, Kurzbefehle)
   sw.js                  Service Worker für den Offline-Betrieb
+  sent.html              Bestätigungsseite für den E-Mail-Versand (nicht löschen)
   icons/                 App-Icons für Home-Bildschirm und Browser
 
 BEREITSTELLEN

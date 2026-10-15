@@ -1,5 +1,5 @@
 /* Phoenix Contact Schnellchecks – Service Worker (Offline-Betrieb) */
-const VERSION = '2.1';
+const VERSION = '2.2';
 const CACHE = 'pc-schnellcheck-' + VERSION;
 const FONT_CACHE = 'pc-schnellcheck-fonts';
 const PAGES = ['./index.html', './en.html', './fr.html', './es.html'];
@@ -42,7 +42,7 @@ self.addEventListener('fetch', e => {
     return;
   }
   // Seitenaufruf: erst Netz (für Updates), sonst Cache
-  if (req.mode === 'navigate') {
+  if (req.mode === 'navigate' && /(\/|\/index\.html|\/(en|fr|es)\.html)$/.test(url.pathname)) {
     const page = /\/(en|fr|es)\.html$/.test(url.pathname) ? './' + url.pathname.split('/').pop() : './index.html';
     e.respondWith(fetch(req).then(r => {
       if (r.ok) { const copy = r.clone(); caches.open(CACHE).then(c => c.put(page, copy)); }
